@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!doctype html>
+<html lang="cs">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventní kalendář</title>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 10px;
+            background: linear-gradient(135deg, #0f4c75, #3282b8, #bbe1fa);
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #ffd700;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #c41e3a, #8b0000);
+            border: 2px solid #ffd700;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calendar-day:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(255,215,0,0.5);
+            border-color: #fff;
+        }
+        
+        .calendar-day.opened {
+            background: linear-gradient(135deg, #228b22, #006400);
+            animation: sparkle 2s ease-in-out;
+        }
+        
+        .calendar-day::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+        
+        .calendar-day:hover::before {
+            opacity: 1;
+            animation: shine 0.5s ease-in-out;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .snow {
+            position: fixed;
+            top: -10px;
+            color: white;
+            user-select: none;
+            pointer-events: none;
+            font-size: 12px;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 480px) {
+            .calendar-grid {
+                max-width: 350px;
+                gap: 4px;
+            }
+            
+            .calendar-day {
+                font-size: 12px;
+                border-radius: 6px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .message {
+                font-size: 12px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <h1>🎄 Adventní kalendář 2024 🎄</h1>
+   <div class="calendar-grid">
+    <div class="calendar-day" data-day="1">
+     1
+    </div>
+    <div class="calendar-day" data-day="2">
+     2
+    </div>
+    <div class="calendar-day" data-day="3">
+     3
+    </div>
+    <div class="calendar-day" data-day="4">
+     4
+    </div>
+    <div class="calendar-day" data-day="5">
+     5
+    </div>
+    <div class="calendar-day" data-day="6">
+     6
+    </div>
+    <div class="calendar-day" data-day="7">
+     7
+    </div>
+    <div class="calendar-day" data-day="8">
+     8
+    </div>
+    <div class="calendar-day" data-day="9">
+     9
+    </div>
+    <div class="calendar-day" data-day="10">
+     10
+    </div>
+    <div class="calendar-day" data-day="11">
+     11
+    </div>
+    <div class="calendar-day" data-day="12">
+     12
+    </div>
+    <div class="calendar-day" data-day="13">
+     13
+    </div>
+    <div class="calendar-day" data-day="14">
+     14
+    </div>
+    <div class="calendar-day" data-day="15">
+     15
+    </div>
+    <div class="calendar-day" data-day="16">
+     16
+    </div>
+    <div class="calendar-day" data-day="17">
+     17
+    </div>
+    <div class="calendar-day" data-day="18">
+     18
+    </div>
+    <div class="calendar-day" data-day="19">
+     19
+    </div>
+    <div class="calendar-day" data-day="20">
+     20
+    </div>
+    <div class="calendar-day" data-day="21">
+     21
+    </div>
+    <div class="calendar-day" data-day="22">
+     22
+    </div>
+    <div class="calendar-day" data-day="23">
+     23
+    </div>
+    <div class="calendar-day" data-day="24">
+     24
+    </div>
+   </div>
+   <div class="message" id="message">
+    Klikněte na číslo dne a objevte vánoční překvapení! 🎁
+   </div>
+  </div>
+  <script>
+        // Vánoční zprávy pro každý den
+        const messages = {
+            1: "🎁 1. prosince: Vánoce začínají! Přejeme krásný advent!",
+            2: "❄️ 2. prosince: První sníh a vánoční nálada!",
+            3: "🕯️ 3. prosince: Čas rozsvítit první svíčku na adventním věnci!",
+            4: "🎄 4. prosince: Čas vybrat ten nejkrásnější vánoční stromeček!",
+            5: "⭐ 5. prosince: Mikuláš už je na cestě!",
+            6: "👟 6. prosince: Nezapomeňte vyčistit boty pro Mikuláše!",
+            7: "🍪 7. prosince: Čas péct vánoční cukroví!",
+            8: "🎵 8. prosince: Zazpívejte si vánoční koledy!",
+            9: "🎨 9. prosince: Vyrobte si vánoční ozdoby!",
+            10: "📝 10. prosince: Napište dopis Ježíškovi!",
+            11: "🛷 11. prosince: Sáňkování a zimní radovánky!",
+            12: "🎪 12. prosince: Navštivte vánoční trhy!",
+            13: "🕯️ 13. prosince: Druhá adventní svíčka!",
+            14: "🎁 14. prosince: Čas zabalit první dárky!",
+            15: "🏠 15. prosince: Ozdobte dům vánočními světly!",
+            16: "📚 16. prosince: Přečtěte si vánoční pohádku!",
+            17: "☃️ 17. prosince: Postavte sněhuláka!",
+            18: "🍷 18. prosince: Svařené víno a vánoční punč!",
+            19: "🎭 19. prosince: Vánoční představení a koncerty!",
+            20: "🕯️ 20. prosince: Třetí adventní svíčka!",
+            21: "🌟 21. prosince: Nejkratší den v roce - zimní slunovrat!",
+            22: "🎄 22. prosince: Poslední přípravy na Vánoce!",
+            23: "🍽️ 23. prosince: Štědrodenní úklid a příprava večeře!",
+            24: "🎅 24. prosince: Štědrý den! Veselé Vánoce! 🎄✨"
+        };
+
+        // Kliknutí na den
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', function() {
+                const dayNumber = this.getAttribute('data-day');
+                const message = messages[dayNumber];
+                
+                // Zobrazit zprávu
+                document.getElementById('message').textContent = message;
+                
+                // Označit jako otevřené
+                this.classList.add('opened');
+                
+                // Animace
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+
+        // Sněhové vločky
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snow');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Vytváření sněhových vloček
+        setInterval(createSnowflake, 300);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f80447b3ce74d3',t:'MTc2MzMwNjg5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+    
+  </body>
+  
+</html>
